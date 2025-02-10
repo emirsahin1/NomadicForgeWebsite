@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Nomadic Forge</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bokor&display=swap" rel="stylesheet">
+  <style>
+    /* 
+      Dark mode styling 
+      - Use CSS variables for easy color/theme management 
+    */
+    :root {
+      --bg-color: #121212;
+      --text-color: #ffffff;
+      --overlay-color: rgba(18, 18, 18, 0.8);
+      --header-overlay: rgba(30, 30, 30, 0.8);
+      --accent-color: #ff6b6b; /* example highlight color */
+    }
+
+    /* Basic reset */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    /* Full-height background with company logo behind a dark overlay */
+    body {
+      background: url('./NomadicForge.png') no-repeat center center fixed;
+      background-size: cover;
+      font-family: Arial, sans-serif;
+      color: var(--text-color);
+      display: flex;
+      flex-direction: column;
+      min-height: 100vh;
+      /* Dark overlay effect (using an ::after pseudo-element to tint the background) */
+      position: relative;
+    }
+
+    body::after {
+      content: '';
+      position: absolute;
+      top: 0; right: 0; bottom: 0; left: 0;
+      background-color: var(--overlay-color);
+      z-index: 0;
+    }
+
+    /* Fade-in + slide-up animation */
+    @keyframes fadeInUp {
+      0% {
+        opacity: 0;
+        transform: translateY(20px);
+      }
+      100% {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    header, main, footer {
+      /* Ensure content appears above the overlay */
+      position: relative;
+      z-index: 1;
+      animation: fadeInUp 1s ease forwards;
+    }
+
+    header {
+      text-align: center;
+      background-color: var(--header-overlay);
+      padding: 1rem;
+    }
+
+    header h1 {
+     
+        font-family: "Bokor", serif;
+        font-weight: 400;
+        font-style: normal;
+      font-size: 3rem;
+      margin-bottom: 0.5rem;
+      color: rgb(248, 121, 82);
+    }
+
+    main {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      padding: 2rem;
+      /* Slight transparency to reveal background */
+      background-color: rgba(0, 0, 0, 0.4);
+    }
+
+    .released-game {
+      margin: 2rem 0;
+      text-align: center;
+      animation: fadeInUp 1.2s ease forwards;
+    }
+
+    .released-game h2 {
+      color: var(--accent-color);
+      margin-bottom: 1rem;
+    }
+
+    .released-game img {
+      max-width: 300px;
+      width: 100%;
+      height: auto;
+      border: 2px solid #333;
+      border-radius: 5px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.5);
+      opacity: 0;
+      animation: fadeInUp 1.5s ease forwards;
+      animation-delay: 0.3s;
+    }
+
+    .privacy-policy {
+      margin-top: 2rem;
+      background-color: rgba(0, 0, 0, 0.6);
+      padding: 1rem;
+      border-radius: 5px;
+      max-width: 600px;
+      text-align: left;
+      animation: fadeInUp 1.5s ease forwards;
+      animation-delay: 0.6s;
+    }
+
+    .privacy-policy h2 {
+      color: var(--accent-color);
+      margin-bottom: 0.5rem;
+    }
+
+    .privacy-policy p {
+      margin-bottom: 1rem;
+      line-height: 1.5;
+    }
+
+    .privacy-policy a {
+      color: var(--accent-color);
+      text-decoration: none;
+    }
+    .privacy-policy a:hover {
+      text-decoration: underline;
+    }
+
+    footer {
+      text-align: center;
+      padding: 1rem;
+      background-color: var(--header-overlay);
+      animation-delay: 0.8s;
+      margin-top: auto;
+    }
+
+    footer span#currentYear {
+      color: var(--accent-color);
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Nomadic Forge</h1>
+  </header>
+
+  <main>
+    <section class="released-game">
+      <h2>Our Latest Release</h2>
+      <img src="./MRLab.png" alt="MRLab Screenshot" />
+    </section>
+
+    <section class="privacy-policy">
+      <h2>Privacy Policy</h2>
+      <p>
+        <strong>MRLab Game:</strong> Nomadic Forge does not collect personal data 
+        through the game <em>MRLab</em>. No in-game analytics, cookies, or user 
+        tracking technologies are implemented. All data about your gameplay 
+        resides on your device and is never transmitted to our servers.
+      </p>
+      <p>
+        <strong>Website:</strong> This website does not collect any personal 
+        data. No cookies are set, and no information is stored on our servers 
+        about your visit.
+      </p>
+      <p>
+        If you have any questions about our privacy practices for either the 
+        website or our game <em>MRLab</em>, please contact us at 
+        <a href="mailto:polymir11@gmail.com">polymir11@gmail.com</a>.
+      </p>
+    </section>
+  </main>
+
+  <footer>
+    &copy; <span id="currentYear"></span> Nomadic Forge
+  </footer>
+
+  <script>
+    // Dynamically update the footer year
+    document.getElementById('currentYear').textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
